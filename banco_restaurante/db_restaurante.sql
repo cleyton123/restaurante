@@ -94,20 +94,3 @@ CREATE TABLE `tb_pedido` (
 LOCK TABLES `tb_pedido` WRITE;
 
 UNLOCK TABLES;
-
-DROP TABLE IF EXISTS `tb_pedido`;
-CREATE TABLE `tb_pedido` (
-  `codigo_mesa` int NOT NULL,
-  `codigo_prato` int NOT NULL,
-  `quantidade_pedido` varchar(45) NOT NULL,
-  `codigo_situacao_pedido` int NOT NULL,
-  KEY `fk_situacao_pedido_idx` (`codigo_situacao_pedido`),
-  KEY `fk_mesa_idx` (`codigo_mesa`),
-  KEY `fk_prato_idx` (`codigo_prato`),
-  CONSTRAINT `fk_mesa` FOREIGN KEY (`codigo_mesa`) REFERENCES `tb_mesa` (`codigo_mesa`),
-  CONSTRAINT `fk_prato` FOREIGN KEY (`codigo_prato`) REFERENCES `tb_prato` (`codigo_prato`),
-  CONSTRAINT `fk_situacao_pedido` FOREIGN KEY (`codigo_situacao_pedido`) REFERENCES `tb_situacao_pedido` (`codigo_situacao_pedido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-LOCK TABLES `tb_pedido` WRITE;
-
-UNLOCK TABLES;
